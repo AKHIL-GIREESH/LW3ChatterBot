@@ -1,19 +1,18 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 
 export default function Home() {
-
   const [messages, setMessages] = useState([
     {
       role: "assistant",
       content: "Yo, this is ChatterBot! How can I help you today?",
     },
   ]);
+
   const [theInput, setTheInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-
-
   const callGetResponse = async () => {
     setIsLoading(true);
     let temp = messages;
@@ -37,6 +36,7 @@ export default function Home() {
     setMessages((prevMessages) => [...prevMessages, output]);
     setIsLoading(false);
 
+    // scrollToRef.current.scrollIntoView()
   };
   const Submit = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (event.key === "Enter") {
